@@ -2,10 +2,15 @@ import { useEffect, useState } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
+  // creating state for component
   const [blogs, setBlogs] = useState(null);
-  const [isPending, setIsPending] = useState(true);
+  const [isPending, setIsPending] = useState(true);  
   const [error, setError] = useState(null);
 
+
+  // useEffect is called whenever page is rerendered
+  // if dependencies = []  -->  Then it will be called only during initial reder
+  // if Dependencies = [blogs] --> it will be called during initial reder + every time when we change state of blogs
   useEffect(() => {
     setTimeout(() => {
       fetch('http://localhost:8000/blogs')
